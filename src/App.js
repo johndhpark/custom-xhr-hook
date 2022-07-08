@@ -1,7 +1,8 @@
-import React, { useState } from "react";
-import useFetch from "../src/hooks/use-fetch";
+import { useState } from "react";
 import NewTask from "./components/NewTask/NewTask";
 import Tasks from "./components/Tasks/Tasks";
+import useFetch from "./hooks/use-fetch";
+
 const URL = "https://xhr-custom-hook-default-rtdb.firebaseio.com/tasks.json";
 
 function App() {
@@ -13,7 +14,7 @@ function App() {
   };
 
   return (
-    <React.Fragment>
+    <>
       <NewTask onAddTask={taskAddHandler} />
       <Tasks
         items={tasks}
@@ -21,7 +22,7 @@ function App() {
         error={error}
         onFetch={memoizedFetchTasks}
       />
-    </React.Fragment>
+    </>
   );
 }
 

@@ -18,10 +18,11 @@ const useFetch = (url, callbackFunc) => {
 			const data = await response.json();
 
 			const loadedTasks = [];
+			const taskKeys = Object.keys(data);
 
-			for (const taskKey in data) {
+			taskKeys.forEach((taskKey) => {
 				loadedTasks.push({ id: taskKey, text: data[taskKey].text });
-			}
+			});
 
 			if (callbackFunc) callbackFunc(loadedTasks);
 		} catch (err) {
